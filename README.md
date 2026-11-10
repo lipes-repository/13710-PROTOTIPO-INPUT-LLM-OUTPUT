@@ -171,6 +171,19 @@ Essas decisões não constituem uma análise jurídica dos termos das plataforma
 | CSV não aparece | Confirme a pasta de trabalho atual do notebook e se a célula responsável pelo registro foi executada. |
 | Hash diferente | Verifique se o texto do desafio mudou; o hash é calculado sobre o texto normalizado. |
 
+## Limitação na submissão de soluções ao LeetCode
+
+A automação não realiza o envio automático das soluções geradas pelos modelos à plataforma LeetCode.
+
+Essa limitação está relacionada às restrições da plataforma quanto à submissão automatizada de respostas, incluindo mecanismos de proteção contra interações automatizadas.
+
+Por esse motivo, o processo foi dividido em duas etapas:
+
+1. **Automatizada:** geração das soluções pelos modelos, coleta das respostas e registro dos resultados e tempos de execução nos arquivos CSV.
+2. **Manual:** submissão das soluções na plataforma LeetCode e acompanhamento dos resultados de aceitação ou rejeição.
+
+Dessa forma, o projeto mantém automatizada a etapa de benchmark dos modelos, enquanto a submissão das respostas permanece sob intervenção manual.
+
 ## Git e publicação
 
 O projeto está versionado com Git e publicado no GitHub.
