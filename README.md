@@ -173,21 +173,16 @@ Essas decisões não constituem uma análise jurídica dos termos das plataforma
 
 ## Git e publicação
 
-O repositório deve ser inicializado a partir de uma cópia local do projeto, fora de pastas sincronizadas pelo OneDrive.
+O projeto está versionado com Git e publicado no GitHub.
 
-Depois de revisar os arquivos e confirmar que nenhum dado sensível foi incluído:
+**Repositório:** https://github.com/lipes-repository/PROTOTIPO_INPUT-LLM-OUTPUT
 
-```powershell
-git init
-git add .
-git status
-git commit -m "Preparação inicial do projeto"
-git branch -M main
-git remote add origin https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
-git push -u origin main
-```
+A branch principal utilizada é `main`.
 
-Substitua a URL de exemplo pela URL do repositório criado no GitHub. Antes do `git commit`, confira cuidadosamente a saída de `git status`.
+Para obter uma cópia do projeto:
+
+```bash
+git clone https://github.com/lipes-repository/PROTOTIPO_INPUT-LLM-OUTPUT.git
 
 ## Limitações conhecidas
 
