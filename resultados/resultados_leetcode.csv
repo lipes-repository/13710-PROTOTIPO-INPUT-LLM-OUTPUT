@@ -1,0 +1,749 @@
+﻿id_desafio,hash_enunciado,modelo,output,tempo_resposta,data_hora,status,url_desafio
+1,7609f0b31e9d59928c732d3d308c10e55d5974277f40bcaec16b2d268118b6c1,qwen2.5-coder:1.5b,"```java
+import java.util.HashMap;
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[]{map.get(complement), i};
+            }
+            map.put(nums[i], i);
+        }
+        return new int[]{-1, -1}; // Caso não encontre uma solução
+    }
+}
+```",25.52,2026-11-09T14:17:33-03:00,ok,https://leetcode.com/problems/two-sum/
+1,7609f0b31e9d59928c732d3d308c10e55d5974277f40bcaec16b2d268118b6c1,llama3.2:1b,"```java
+import java.util.*;
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+            map.put(nums[i], i);
+        }
+        throw new RuntimeException(""Não encontrou solução"");
+    }
+}
+```",27.87,2026-11-09T14:18:01-03:00,ok,https://leetcode.com/problems/two-sum/
+1,7609f0b31e9d59928c732d3d308c10e55d5974277f40bcaec16b2d268118b6c1,gemma3:1b,"```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * You are given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+     * You may assume that each input would have exactly one solution, and you may not use the same element twice.
+     * You can return the answer in any order.
+     *
+     * @param nums the array of integers
+     * @param target the target
+     * @return the indices of the two numbers such that they add up to target
+     */
+    public int[] solution(int[] nums, int target) {
+        int[] result = new int[2];
+        Arrays.sort(nums);
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left < right) {
+            if (nums[left] + nums[right] == target) {
+                result[0] = left;
+                result[1] = right;
+                return result;
+            }
+            if (nums[left] + nums[right] < target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return result;
+    }
+}
+```",35.64,2026-11-09T14:18:36-03:00,ok,https://leetcode.com/problems/two-sum/
+2,078c18d5699bb6a726d70f00c6ad5d26147ac347e4d1000eb416a7f46d862e9f,qwen2.5-coder:1.5b,"```java
+class Solution {
+    public boolean isPalindrome(int x) {
+        if (x < 0) {
+            return false;
+        }
+        int reversed = 0;
+        int original = x;
+        while (x != 0) {
+            reversed = reversed * 10 + x % 10;
+            x /= 10;
+        }
+        return original == reversed;
+    }
+}
+```",18.91,2026-11-09T14:18:55-03:00,ok,https://leetcode.com/problems/palindrome-number/
+2,078c18d5699bb6a726d70f00c6ad5d26147ac347e4d1000eb416a7f46d862e9f,llama3.2:1b,"```java
+import java.util.Stack;
+
+public class Solution {
+    public boolean isPalindrome(int x) {
+        if (x < 0) {
+            return false;
+        }
+        int n = 0;
+        int rev = 0;
+        while (x != 0) {
+            n = n * 10 + x % 10;
+            x /= 10;
+        }
+        while (rev <= n) {
+            if (rev != n) {
+                return false;
+            }
+            rev = rev * 10 + rev % 10;
+            rev /= 10;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.isPalindrome(121));  // Output: true
+        System.out.println(solution.isPalindrome(-121)); // Output: false
+        System.out.println(solution.isPalindrome(10));   // Output: false
+    }
+}
+```",28.89,2026-11-09T14:19:24-03:00,ok,https://leetcode.com/problems/palindrome-number/
+2,078c18d5699bb6a726d70f00c6ad5d26147ac347e4d1000eb416a7f46d862e9f,gemma3:1b,"```java
+class Solution {
+    /**
+     * Checks if an integer is a palindrome.
+     *
+     * @param x The integer to check.
+     * @return True if the integer is a palindrome, false otherwise.
+     */
+    public boolean isPalindrome(int x) {
+        if (x < 0) {
+            return false;
+        }
+        int original = x;
+        int reversed = 0;
+        while (x > 0) {
+            int lastDigit = x % 10;
+            reversed = reversed * 10 + lastDigit;
+            x /= 10;
+        }
+        return original == reversed;
+    }
+}
+```",22.31,2026-11-09T14:19:46-03:00,ok,https://leetcode.com/problems/palindrome-number/
+3,f97b4a9b6b31af48ac50e9aa85489585597e81fc35f448f8d2b1f496dc7df3e9,qwen2.5-coder:1.5b,"```java
+class Solution {
+    public int romanToInt(String s) {
+        int result = 0;
+        int prev = 0;
+        
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int current = getValue(s.charAt(i));
+            
+            if (current < prev) {
+                result -= current;
+            } else {
+                result += current;
+            }
+            
+            prev = current;
+        }
+        
+        return result;
+    }
+    
+    private int getValue(char c) {
+        switch (c) {
+            case 'I': return 1;
+            case 'V': return 5;
+            case 'X': return 10;
+            case 'L': return 50;
+            case 'C': return 100;
+            case 'D': return 500;
+            case 'M': return 1000;
+            default: throw new IllegalArgumentException(""Invalid Roman numeral"");
+        }
+    }
+}
+```",34.21,2026-11-09T14:20:21-03:00,ok,https://leetcode.com/problems/roman-to-integer/
+3,f97b4a9b6b31af48ac50e9aa85489585597e81fc35f448f8d2b1f496dc7df3e9,llama3.2:1b,"```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class Solution {
+    public int romanToInt(String s) {
+        Map<Character, Integer> romanNumerals = new HashMap<>();
+        romanNumerals.put('I', 1);
+        romanNumerals.put('V', 5);
+        romanNumerals.put('X', 10);
+        romanNumerals.put('L', 50);
+        romanNumerals.put('C', 100);
+        romanNumerals.put('D', 500);
+        romanNumerals.put('M', 1000);
+
+        int result = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (i > 0 && romanNumerals.get(s.charAt(i)) > romanNumerals.get(s.charAt(i - 1))) {
+                result += romanNumerals.get(s.charAt(i)) - 2 * romanNumerals.get(s.charAt(i - 1));
+            } else {
+                result += romanNumerals.get(s.charAt(i));
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.romanToInt(""III""));  // 3
+        System.out.println(solution.romanToInt(""LVIII""));  // 58
+        System.out.println(solution.romanToInt(""MCMXCIV""));  // 1994
+    }
+}
+```",46.23,2026-11-09T14:21:07-03:00,ok,https://leetcode.com/problems/roman-to-integer/
+3,f97b4a9b6b31af48ac50e9aa85489585597e81fc35f448f8d2b1f496dc7df3e9,gemma3:1b,"```java
+class Solution {
+    /**
+     * Converts a Roman numeral to an integer.
+     *
+     * @param s The Roman numeral string.
+     * @return The integer representation of the Roman numeral.
+     */
+    public int romanToInt(String s) {
+        int result = 0;
+        int n = s.length();
+        for (int i = 0; i < n; i++) {
+            char c = s.charAt(i);
+            int currentValue = c - '0';
+            if (currentValue < 1 || currentValue > 9) {
+                return -1;
+            }
+            result += currentValue;
+        }
+        return result;
+    }
+}
+```",30.12,2026-11-09T14:21:37-03:00,ok,https://leetcode.com/problems/roman-to-integer/
+4,295d09872ddafd618e681680ff7727cb94d16f06ce134396dda0d1f481a9a01a,qwen2.5-coder:1.5b,"```java
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c == '(' || c == '[' || c == '{') {
+                stack.push(c);
+            } else {
+                if (stack.isEmpty() || !stack.pop().equals(c)) {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+}
+```",20.37,2026-11-09T14:21:57-03:00,ok,https://leetcode.com/problems/valid-parentheses/
+4,295d09872ddafd618e681680ff7727cb94d16f06ce134396dda0d1f481a9a01a,llama3.2:1b,"```java
+import java.util.Stack;
+
+public class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            } else if (c == ')' || c == '}' || c == ']') {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                char top = stack.pop();
+                if ((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')) {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.isValid(""()""));  // true
+        System.out.println(solution.isValid(""()[]{}""));  // true
+        System.out.println(solution.isValid(""(]""));  // false
+        System.out.println(solution.isValid(""([]""));  // true
+        System.out.println(solution.isValid(""([)]""));  // false
+    }
+}
+```",34.9,2026-11-09T14:22:32-03:00,ok,https://leetcode.com/problems/valid-parentheses/
+4,295d09872ddafd618e681680ff7727cb94d16f06ce134396dda0d1f481a9a01a,gemma3:1b,"```java
+class Solution {
+    /**
+     * Checks if the input string is valid.
+     *
+     * @param s The input string.
+     * @return True if the input string is valid, false otherwise.
+     */
+    public boolean isValid(String s) {
+        if (s == null || s.length() == 0) {
+            return true;
+        }
+
+        int balance = 0;
+        for (char c : s.toCharArray()) {
+            if (c == '(' || c == '{' || c == '[' && balance < 2) {
+                balance++;
+            } else {
+                balance--;
+            }
+        }
+
+        return balance == 0;
+    }
+}
+```",25.98,2026-11-09T14:22:58-03:00,ok,https://leetcode.com/problems/valid-parentheses/
+5,ea844bc0cb4b3020f691da4a5721a8ea9ccab652900de64632a5ab50390d643a,qwen2.5-coder:1.5b,"```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
+        
+        while (list1 != null && list2 != null) {
+            if (list1.val < list2.val) {
+                current.next = list1;
+                list1 = list1.next;
+            } else {
+                current.next = list2;
+                list2 = list2.next;
+            }
+            current = current.next;
+        }
+        
+        if (list1 != null) {
+            current.next = list1;
+        } else if (list2 != null) {
+            current.next = list2;
+        }
+        
+        return dummy.next;
+    }
+}
+```",31.2,2026-11-09T14:23:30-03:00,ok,https://leetcode.com/problems/merge-two-sorted-lists/
+5,ea844bc0cb4b3020f691da4a5721a8ea9ccab652900de64632a5ab50390d643a,llama3.2:1b,"```java
+import java.util.Arrays;
+
+public class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
+        while (list1 != null && list2 != null) {
+            if (list1.val < list2.val) {
+                current.next = list1;
+                list1 = list1.next;
+            } else {
+                current.next = list2;
+                list2 = list2.next;
+            }
+            current = current.next;
+        }
+        if (list1 != null) {
+            current.next = list1;
+        } else if (list2 != null) {
+            current.next = list2;
+        }
+        return dummy.next;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        ListNode list1 = new ListNode(1, new ListNode(2, new ListNode(4)));
+        ListNode list2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+        ListNode result = solution.mergeTwoLists(list1, list2);
+        while (result != null) {
+            System.out.print(result.val + "" "");
+            result = result.next;
+        }
+    }
+}
+```",37.0,2026-11-09T14:24:07-03:00,ok,https://leetcode.com/problems/merge-two-sorted-lists/
+5,ea844bc0cb4b3020f691da4a5721a8ea9ccab652900de64632a5ab50390d643a,gemma3:1b,"```java
+class Solution {
+    /**
+     * Merge two sorted linked lists into one sorted list.
+     *
+     * @param list1 The first sorted linked list.
+     * @param list2 The second sorted linked list.
+     * @return The head of the merged sorted linked list.
+     */
+    public ListNode mergeLists(ListNode list1, ListNode list2) {
+        if (list1 == null) {
+            return list2;
+        }
+        if (list2 == null) {
+            return list1;
+        }
+
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+
+        while (list1 != null && list2 != null) {
+            if (list1.val <= list2.val) {
+                tail.next = list1;
+                list1 = list1.next;
+            } else {
+                tail.next = list2;
+                list2 = list2.next;
+            }
+            tail = tail.next;
+        }
+
+        if (list1 != null) {
+            tail.next = list1;
+        } else {
+            tail.next = list2;
+        }
+
+        return dummy.next;
+    }
+
+    private static class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) {
+            val = x;
+        }
+    }
+}
+```",39.33,2026-11-09T14:24:46-03:00,ok,https://leetcode.com/problems/merge-two-sorted-lists/
+6,c780efc502193f3e13ba984ef189b0520ca26f66acf6b6648d82fcc247af226f,qwen2.5-coder:1.5b,"```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        int min = prices[0];
+        int max = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < min) {
+                min = prices[i];
+            } else if (prices[i] - min > max) {
+                max = prices[i] - min;
+            }
+        }
+        return max;
+    }
+}
+```",23.63,2026-11-09T14:25:10-03:00,ok,https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+6,c780efc502193f3e13ba984ef189b0520ca26f66acf6b6648d82fcc247af226f,llama3.2:1b,"```java
+import java.util.Arrays;
+
+public class Solution {
+    public int maxProfit(int[] prices) {
+        int minPrice = prices[0];
+        int maxProfit = 0;
+        for (int price : prices) {
+            minPrice = Math.min(minPrice, price);
+            maxProfit = Math.max(maxProfit, price - minPrice);
+        }
+        return maxProfit;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[] prices = {7, 1, 5, 3, 6, 4};
+        System.out.println(solution.maxProfit(prices));
+    }
+}
+```",31.34,2026-11-09T14:25:41-03:00,ok,https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+6,c780efc502193f3e13ba984ef189b0520ca26f66acf6b6648d82fcc247af226f,gemma3:1b,"```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Maximizes profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+     *
+     * @param prices The array of prices.
+     * @return The maximum profit achievable from this transaction.
+     */
+    public int maxProfit(int[] prices) {
+        int n = prices.length;
+        int[] dp = new int[n];
+        dp[0] = 0;
+
+        for (int i = 1; i < n; i++) {
+            dp[i] = dp[i - 1];
+            int profit = prices[i] - prices[i - 1];
+            if (profit > 0) {
+                dp[i] = Math.max(dp[i], profit);
+            }
+        }
+
+        return dp[n - 1];
+    }
+}
+```",31.11,2026-11-09T14:26:12-03:00,ok,https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+7,ef63c4a36d1b2a813fa8bb202b8b364852d52b0fd3d2461fb6a09d8f202c07db,qwen2.5-coder:1.5b,"```java
+class Solution {
+    public boolean isPalindrome(String s) {
+        int i = 0, j = s.length() - 1;
+        while (i < j) {
+            while (i < j && !Character.isLetterOrDigit(s.charAt(i))) i++;
+            while (i < j && !Character.isLetterOrDigit(s.charAt(j))) j--;
+            if (Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))) return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+}
+```",23.06,2026-11-09T14:26:35-03:00,ok,https://leetcode.com/problems/valid-palindrome/
+7,ef63c4a36d1b2a813fa8bb202b8b364852d52b0fd3d2461fb6a09d8f202c07db,llama3.2:1b,"```java
+import java.util.Arrays;
+
+public class Solution {
+    public boolean isPalindrome(String s) {
+        s = s.toLowerCase().replaceAll(""[^a-z0-9]"", """");
+        int left = 0;
+        int right = s.length() - 1;
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.isPalindrome(""A man, a plan, a canal: Panama"")); // true
+        System.out.println(solution.isPalindrome(""race a car"")); // false
+        System.out.println(solution.isPalindrome("""")); // true
+    }
+}
+```",30.74,2026-11-09T14:27:06-03:00,ok,https://leetcode.com/problems/valid-palindrome/
+7,ef63c4a36d1b2a813fa8bb202b8b364852d52b0fd3d2461fb6a09d8f202c07db,gemma3:1b,"```java
+import java.util.regex.Pattern;
+
+class Solution {
+    /**
+     * Checks if a string is a palindrome, ignoring case and non-alphanumeric characters.
+     *
+     * @param s The input string.
+     * @return True if the string is a palindrome, false otherwise.
+     */
+    public boolean isPalindrome(String s) {
+        if (s == null || s.length() == 0) {
+            return true;
+        }
+
+        // Remove non-alphanumeric characters and convert to lowercase
+        String cleanString = s.replaceAll(""[^a-zA-Z0-9]"", """").toLowerCase();
+
+        // Check if the cleaned string is a palindrome
+        int left = 0;
+        int right = cleanString.length() - 1;
+
+        while (left < right) {
+            if (cleanString.charAt(left) != cleanString.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+
+        return true;
+    }
+}
+```",31.5,2026-11-09T14:27:37-03:00,ok,https://leetcode.com/problems/valid-palindrome/
+8,5f664addd7ae887d04f3d6453ae4d3c256bca50692ffc4d336e644af9f27cc6f,qwen2.5-coder:1.5b,"```java
+class Solution {
+    public int climbStairs(int n) {
+        if (n <= 2) return n;
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;
+        for (int i = 3; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
+}
+```",21.71,2026-11-09T14:27:59-03:00,ok,https://leetcode.com/problems/climbing-stairs/
+8,5f664addd7ae887d04f3d6453ae4d3c256bca50692ffc4d336e644af9f27cc6f,llama3.2:1b,"```java
+import java.util.Scanner;
+
+public class Solution {
+    public int climbStairs(int n) {
+        if (n <= 2) {
+            return n;
+        }
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;
+        for (int i = 3; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        System.out.println(solution.climbStairs(n));
+    }
+}
+```",29.59,2026-11-09T14:28:29-03:00,ok,https://leetcode.com/problems/climbing-stairs/
+8,5f664addd7ae887d04f3d6453ae4d3c256bca50692ffc4d336e644af9f27cc6f,gemma3:1b,"```java
+class Solution {
+    /**
+     * You are climbing a staircase. It takes n steps to reach the top.
+     * Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+     *
+     * @param n the number of steps
+     * @return the number of distinct ways to climb to the top
+     */
+    public int climbStairs(int n) {
+        if (n <= 2) {
+            return n;
+        }
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;
+        for (int i = 3; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
+}
+```",27.69,2026-11-09T14:28:56-03:00,ok,https://leetcode.com/problems/climbing-stairs/
+9,d3f17d189eb873e05d8d0b8d637d69890c9a70e16b9e7f2a906a2b773501a519,qwen2.5-coder:1.5b,"```java
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (!set.add(num)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+```",17.88,2026-11-09T14:29:14-03:00,ok,https://leetcode.com/problems/contains-duplicate/
+9,d3f17d189eb873e05d8d0b8d637d69890c9a70e16b9e7f2a906a2b773501a519,llama3.2:1b,"```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (set.contains(num)) {
+                return true;
+            }
+            set.add(num);
+        }
+        return false;
+    }
+}
+```",20.51,2026-11-09T14:29:35-03:00,ok,https://leetcode.com/problems/contains-duplicate/
+9,d3f17d189eb873e05d8d0b8d637d69890c9a70e16b9e7f2a906a2b773501a519,gemma3:1b,"```java
+import java.util.HashSet;
+
+class Solution {
+    /**
+     * Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+     *
+     * @param nums the input array
+     * @return true if any value appears at least twice in the array, and false if every element is distinct.
+     */
+    public boolean hasDuplicates(int[] nums) {
+        HashSet<Integer> seen = new HashSet<>();
+        for (int num : nums) {
+            if (seen.contains(num)) {
+                return true;
+            }
+            seen.add(num);
+        }
+        return false;
+    }
+}
+```",23.69,2026-11-09T14:29:59-03:00,ok,https://leetcode.com/problems/contains-duplicate/
+10,5d109d3d93d36ce899e4a7bb4a5085a5f7df88935cd61e77c0b1a9c26c1dd9bc,qwen2.5-coder:1.5b,"```java
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int max = nums[0];
+        int current = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            current = Math.max(nums[i], current + nums[i]);
+            max = Math.max(max, current);
+        }
+        return max;
+    }
+}
+```",20.6,2026-11-09T14:30:19-03:00,ok,https://leetcode.com/problems/maximum-subarray/
+10,5d109d3d93d36ce899e4a7bb4a5085a5f7df88935cd61e77c0b1a9c26c1dd9bc,llama3.2:1b,"```java
+import java.util.*;
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int maxSum = nums[0];
+        int currentSum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            currentSum = Math.max(nums[i], currentSum + nums[i]);
+            maxSum = Math.max(maxSum, currentSum);
+        }
+        return maxSum;
+    }
+}
+```",24.89,2026-11-09T14:30:44-03:00,ok,https://leetcode.com/problems/maximum-subarray/
+10,5d109d3d93d36ce899e4a7bb4a5085a5f7df88935cd61e77c0b1a9c26c1dd9bc,gemma3:1b,"```java
+class Solution {
+    /**
+     * Given an integer array nums, find the subarray with the largest sum, and return its sum.
+     *
+     * Example 1:
+     * Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+     * Output: 6
+     * Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+     *
+     * Example 2:
+     * Input: nums = [1]
+     * Output: 1
+     * Explanation: The subarray [1] has the largest sum 1.
+     *
+     * Example 3:
+     * Input: nums = [5,4,-1,7,8]
+     * Output: 23
+     * Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
+     *
+     * @param nums The input integer array.
+     * @return The sum of the subarray with the largest sum.
+     */
+    public int solve(int[] nums) {
+        int maxSoFar = nums[0];
+        int currentMax = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            currentMax = Math.max(nums[i], currentMax + nums[i]);
+            maxSoFar = Math.max(maxSoFar, currentMax);
+        }
+
+        return maxSoFar;
+    }
+}
+```",40.85,2026-11-09T14:31:25-03:00,ok,https://leetcode.com/problems/maximum-subarray/

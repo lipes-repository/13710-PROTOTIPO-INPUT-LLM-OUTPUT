@@ -1,0 +1,14 @@
+1) Copie esta pasta para um local fora do OneDrive, por exemplo C:\Projetos\Projeto-Filipe.
+2) Abra essa pasta no VS Code.
+3) Revise: README.md, benchmark.ipynb, desafios.csv, resultados/ e .gitignore.
+4) No PowerShell, execute:
+
+git init
+git add .
+git status
+git commit -m "Preparação inicial do projeto"
+git branch -M main
+git remote add origin https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+git push -u origin main
+
+Não execute o push antes da revisão e aprovação dos arquivos.

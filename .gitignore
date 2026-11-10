@@ -1,0 +1,30 @@
+# Ambiente Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Cache local com conteúdo coletado
+/cache/
+
+# Resultados locais com prompts completos (não publicar)
+/resultados_final.csv
+/resultados_leetcode.csv
+/resultados_antigo_21do10.csv
+/teste_*.csv
+
+# Segredos e configurações locais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Sistema operacional e logs
+.DS_Store
+Thumbs.db
+*.log

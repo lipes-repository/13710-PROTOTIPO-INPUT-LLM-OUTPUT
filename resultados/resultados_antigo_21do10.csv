@@ -1,0 +1,288 @@
+﻿id_desafio,hash_enunciado,modelo,output,tempo_resposta,data_hora,status
+1,04eab11736a22ea57bf6508d2a6665c204a572174287bd22bdaf99e66512c1da,qwen2.5-coder:1.5b,"```python
+def soma_pares(numbers):
+    return sum(num for num in numbers if num % 2 == 0)
+```",24.79,2026-10-21T13:21:52-03:00,ok
+1,04eab11736a22ea57bf6508d2a6665c204a572174287bd22bdaf99e66512c1da,llama3.2:1b,"```python
+def soma_pares(lst):
+    return sum(num for num in lst if num % 2 == 0)
+
+print(soma_pares([1, 2, 3, 4]))  # 6
+```",18.02,2026-10-21T13:22:14-03:00,ok
+1,04eab11736a22ea57bf6508d2a6665c204a572174287bd22bdaf99e66512c1da,gemma3:1b,"```python
+def soma_pares(lista):
+  """"""
+  Calcula a soma dos números pares em uma lista de inteiros.
+
+  Args:
+    lista: Uma lista de inteiros.
+
+  Returns:
+    A soma dos números pares na lista.
+  """"""
+  soma = 0
+  for numero in lista:
+    if numero % 2 == 0:
+      soma += numero
+  return soma
+
+if __name__ == ""__main__"":
+  lista = [1, 2, 3, 4]
+  resultado = soma_pares(lista)
+  print(resultado)  # Saída: 6
+```",24.07,2026-10-21T13:22:39-03:00,ok
+1,04eab11736a22ea57bf6508d2a6665c204a572174287bd22bdaf99e66512c1da,qwen2.5-coder:1.5b,"```python
+def soma_pares(numbers):
+    return sum(num for num in numbers if num % 2 == 0)
+```",13.87,2026-10-21T13:24:20-03:00,ok
+2,603ad4d54faeb57dda0ac9a06cbdeba816cdb71cc3c95addc6a1a8842ab8ade4,qwen2.5-coder:1.5b,"```python
+while True:
+    try:
+        nota1 = float(input(""Digite a primeira nota: ""))
+        if 0 <= nota1 <= 10:
+            break
+        else:
+            print(""nota invalida"")
+    except ValueError:
+        print(""nota invalida"")
+
+while True:
+    try:
+        nota2 = float(input(""Digite a segunda nota: ""))
+        if 0 <= nota2 <= 10:
+            break
+        else:
+            print(""nota invalida"")
+    except ValueError:
+        print(""nota invalida"")
+
+media = (nota1 + nota2) / 2
+print(f""media = {media:.2f}"")
+```",25.7,2026-10-21T13:24:50-03:00,ok
+2,603ad4d54faeb57dda0ac9a06cbdeba816cdb71cc3c95addc6a1a8842ab8ade4,llama3.2:1b,"```python
+def calcular_media(notas):
+    if len(notas) != 2:
+        return ""Nota invalida""
+    notas = [float(n) for n in notas]
+    if not all(0 <= n <= 10 for n in notas):
+        return ""Nota invalida""
+    media = sum(notas) / 2
+    return f""media = {media:.2f}""
+
+notas = input(""Avaliações: "")
+print(calcular_media(notas))
+```",26.42,2026-10-21T13:25:17-03:00,ok
+2,603ad4d54faeb57dda0ac9a06cbdeba816cdb71cc3c95addc6a1a8842ab8ade4,gemma3:1b,"```python
+def calcular_media_semestral():
+    """"""
+    Calcula e imprime a média semestral de duas notas válidas.
+    """"""
+    try:
+        nota1 = float(input())
+        nota2 = float(input())
+
+        if nota1 < 0 or nota2 < 0:
+            print(""nota invalida"")
+        else:
+            media = (nota1 + nota2) / 2
+            print(""media = "" + str(media))
+
+    except ValueError:
+        print(""nota invalida"")
+
+if __name__ == ""__main__"":
+    calcular_media_semestral()
+```",23.53,2026-10-21T13:25:40-03:00,ok
+1,04eab11736a22ea57bf6508d2a6665c204a572174287bd22bdaf99e66512c1da,qwen2.5-coder:1.5b,"```java
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4};
+        int sum = sumEvenNumbers(numbers);
+        System.out.println(sum); // Saída: 6
+    }
+
+    public static int sumEvenNumbers(int[] numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+            if (number % 2 == 0) {
+                sum += number;
+            }
+        }
+        return sum;
+    }
+}
+```",16.79,2026-10-21T13:38:35-03:00,ok
+1,04eab11736a22ea57bf6508d2a6665c204a572174287bd22bdaf99e66512c1da,llama3.2:1b,"```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> lista = new ArrayList<>();
+        lista.add(1);
+        lista.add(2);
+        lista.add(3);
+        lista.add(4);
+        System.out.println(somaPares(lista));
+    }
+
+    public static int somaPares(List<Integer> lista) {
+        int soma = 0;
+        for (Integer num : lista) {
+            if (num % 2 == 0) {
+                soma += num;
+            }
+        }
+        return soma;
+    }
+}
+```",18.31,2026-10-21T13:38:58-03:00,ok
+1,04eab11736a22ea57bf6508d2a6665c204a572174287bd22bdaf99e66512c1da,gemma3:1b,"```java
+import java.util.List;
+
+class Solution {
+    /**
+     * Calcula a soma dos números pares em uma lista de inteiros.
+     *
+     * @param numbers A lista de inteiros.
+     * @return A soma dos números pares na lista.
+     */
+    public int sumOfEvenNumbers(List<Integer> numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+            if (number % 2 == 0) {
+                sum += number;
+            }
+        }
+        return sum;
+    }
+}
+```",16.2,2026-10-21T13:39:14-03:00,ok
+2,603ad4d54faeb57dda0ac9a06cbdeba816cdb71cc3c95addc6a1a8842ab8ade4,qwen2.5-coder:1.5b,"```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double nota1 = 0, nota2 = 0;
+        boolean valid = false;
+
+        while (!valid) {
+            System.out.print(""Digite a primeira nota: "");
+            nota1 = scanner.nextDouble();
+
+            if (nota1 < 0 || nota1 > 10) {
+                System.out.println(""nota invalida"");
+            } else {
+                valid = true;
+            }
+        }
+
+        valid = false;
+
+        while (!valid) {
+            System.out.print(""Digite a segunda nota: "");
+            nota2 = scanner.nextDouble();
+
+            if (nota2 < 0 || nota2 > 10) {
+                System.out.println(""nota invalida"");
+            } else {
+                valid = true;
+            }
+        }
+
+        double media = (nota1 + nota2) / 2.0;
+        System.out.printf(""media = %.2f\n"", media);
+    }
+}
+```",27.36,2026-10-21T13:39:42-03:00,ok
+2,603ad4d54faeb57dda0ac9a06cbdeba816cdb71cc3c95addc6a1a8842ab8ade4,llama3.2:1b,"```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double nota1 = 0;
+        double nota2 = 0;
+        boolean valida1 = false;
+        boolean valida2 = false;
+
+        while (true) {
+            System.out.print(""Nota 1 (0-10): "");
+            double nota1Temp = scanner.nextDouble();
+            if (nota1Temp >= 0 && nota1Temp <= 10) {
+                valida1 = true;
+                nota1 = nota1Temp;
+            } else {
+                System.out.println(""Nota invalida"");
+            }
+
+            System.out.print(""Nota 2 (0-10): "");
+            double nota2Temp = scanner.nextDouble();
+            if (nota2Temp >= 0 && nota2Temp <= 10) {
+                valida2 = true;
+                nota2 = nota2Temp;
+            } else {
+                System.out.println(""Nota invalida"");
+            }
+
+            if (valida1 && valida2) {
+                break;
+            }
+        }
+
+        if (valida1 && valida2) {
+            double media = (nota1 + nota2) / 2;
+            System.out.println(""Media = "" + String.format(""%.2f"", media));
+        }
+    }
+}
+```",36.99,2026-10-21T13:40:19-03:00,ok
+2,603ad4d54faeb57dda0ac9a06cbdeba816cdb71cc3c95addc6a1a8842ab8ade4,gemma3:1b,"```java
+import java.util.Scanner;
+
+public class MediaSemestral {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int nota1, nota2;
+
+        System.out.print(""Digite a primeira nota: "");
+        nota1 = scanner.nextInt();
+
+        System.out.print(""Digite a segunda nota: "");
+        nota2 = scanner.nextInt();
+
+        if (nota1 < 0 || nota2 < 0) {
+            System.out.println(""nota invalida"");
+        } else {
+            double media = (double) (nota1 + nota2) / 2;
+            System.out.println(""media = "" + media);
+        }
+    }
+}
+```",23.39,2026-10-21T13:40:42-03:00,ok
+1,04eab11736a22ea57bf6508d2a6665c204a572174287bd22bdaf99e66512c1da,qwen2.5-coder:1.5b,"```java
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4};
+        int sum = sumEvenNumbers(numbers);
+        System.out.println(sum); // Saída: 6
+    }
+
+    public static int sumEvenNumbers(int[] numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+            if (number % 2 == 0) {
+                sum += number;
+            }
+        }
+        return sum;
+    }
+}
+```",18.64,2026-10-21T13:47:54-03:00,ok

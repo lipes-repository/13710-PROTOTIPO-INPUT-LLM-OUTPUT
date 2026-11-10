@@ -1,0 +1,175 @@
+﻿id_desafio,hash_enunciado,modelo,output,tempo_resposta,data_hora,status
+1,04eab11736a22ea57bf6508d2a6665c204a572174287bd22bdaf99e66512c1da,qwen2.5-coder:1.5b,"```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] numbers = new int[5]; // Assuming the list has 5 elements
+        int sum = 0;
+
+        System.out.println(""Digite 5 números inteiros:"");
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+
+        for (int number : numbers) {
+            if (number % 2 == 0) {
+                sum += number;
+            }
+        }
+
+        System.out.println(""A soma dos números pares é: "" + sum);
+    }
+}
+```",18.2,2026-10-26T21:34:28-03:00,ok
+1,04eab11736a22ea57bf6508d2a6665c204a572174287bd22bdaf99e66512c1da,llama3.2:1b,"```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] lista = new int[0];
+        int soma = 0;
+
+        while (true) {
+            System.out.print(""Digite um numero (ou 'fim' para parar): "");
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase(""fim"")) {
+                break;
+            }
+
+            try {
+                int numero = Integer.parseInt(input);
+                if (numero < 0) {
+                    System.out.println(""Não é possível calcular a soma de números negativos."");
+                } else {
+                    lista = new int[lista.length + 1];
+                    lista[0] = numero;
+                    for (int i = 1; i < lista.length; i++) {
+                        lista[i] = lista[i - 1] + numero;
+                    }
+                    soma = lista[lista.length - 1];
+                    System.out.println(""Soma dos números pares: "" + soma);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(""Não é possível calcular a soma de números negativos."");
+            }
+        }
+
+        scanner.close();
+    }
+}
+```",29.23,2026-10-26T21:34:57-03:00,ok
+1,04eab11736a22ea57bf6508d2a6665c204a572174287bd22bdaf99e66512c1da,gemma3:1b,"```java
+import java.util.List;
+
+class Solution {
+    public int sumOfEvenNumbers(List<Integer> numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+            if (number % 2 == 0) {
+                sum += number;
+            }
+        }
+        return sum;
+    }
+}
+```",13.71,2026-10-26T21:35:11-03:00,ok
+2,603ad4d54faeb57dda0ac9a06cbdeba816cdb71cc3c95addc6a1a8842ab8ade4,qwen2.5-coder:1.5b,"```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double nota1 = 0, nota2 = 0;
+        boolean valid = false;
+
+        while (!valid) {
+            System.out.print(""Digite a primeira nota: "");
+            if (scanner.hasNextDouble()) {
+                nota1 = scanner.nextDouble();
+                if (nota1 >= 0 && nota1 <= 10) {
+                    valid = true;
+                } else {
+                    System.out.println(""Nota invalida"");
+                }
+            } else {
+                System.out.println(""Entrada invalida"");
+                scanner.next(); // Limpa o buffer
+            }
+        }
+
+        valid = false;
+
+        while (!valid) {
+            System.out.print(""Digite a segunda nota: "");
+            if (scanner.hasNextDouble()) {
+                nota2 = scanner.nextDouble();
+                if (nota2 >= 0 && nota2 <= 10) {
+                    valid = true;
+                } else {
+                    System.out.println(""Nota invalida"");
+                }
+            } else {
+                System.out.println(""Entrada invalida"");
+                scanner.next(); // Limpa o buffer
+            }
+        }
+
+        double media = (nota1 + nota2) / 2.0;
+        System.out.printf(""media = %.2f\n"", media);
+    }
+}
+```",33.42,2026-10-26T21:35:44-03:00,ok
+2,603ad4d54faeb57dda0ac9a06cbdeba816cdb71cc3c95addc6a1a8842ab8ade4,llama3.2:1b,"```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.print(""Nota 1: "");
+            double nota1 = scanner.nextDouble();
+            System.out.print(""Nota 2: "");
+            double nota2 = scanner.nextDouble();
+
+            if (nota1 < 0 || nota1 > 10 || nota2 < 0 || nota2 > 10) {
+                System.out.println(""Nota invalida"");
+            } else {
+                double media = (nota1 + nota2) / 2;
+                System.out.println(""Média = "" + String.format(""%.2f"", media));
+                break;
+            }
+        }
+
+        scanner.close();
+    }
+}
+```",27.45,2026-10-26T21:36:12-03:00,ok
+2,603ad4d54faeb57dda0ac9a06cbdeba816cdb71cc3c95addc6a1a8842ab8ade4,gemma3:1b,"```java
+import java.util.Scanner;
+
+public class MediaSemestral {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double nota1, nota2;
+
+        System.out.print(""Digite a primeira nota: "");
+        nota1 = scanner.nextDouble();
+
+        System.out.print(""Digite a segunda nota: "");
+        nota2 = scanner.nextDouble();
+
+        if (nota1 < 0 || nota1 > 10) {
+            System.out.println(""nota invalida"");
+        } else {
+            double media = (nota1 + nota2) / 2.0;
+            System.out.println(""Media = "" + media);
+        }
+    }
+}
+```",23.22,2026-10-26T21:36:35-03:00,ok
